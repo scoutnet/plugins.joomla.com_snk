@@ -24,7 +24,15 @@
 		<filename>controller.php</filename>
 		<filename>snk.php</filename>
 		<filename>index.html</filename>
+		<filename>assets/index.html</filename>
+		<filename>assets/kalender.css</filename>
 		<filename>models/snk.php</filename>
+		<filename>models/event.php</filename>
+		<filename>models/index.html</filename>
+		<filename>models/jsonRPCClient.php</filename>
+		<filename>models/kalender.php</filename>
+		<filename>models/stufe.php</filename>
+		<filename>models/user.php</filename>
 		<filename>views/snk/index.html</filename>
 		<filename>views/snk/view.html.php</filename>
 		<filename>views/snk/tmpl/index.html</filename>

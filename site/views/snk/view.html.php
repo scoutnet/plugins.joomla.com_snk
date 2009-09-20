@@ -5,11 +5,14 @@ class SnkViewSnk extends JView
 {
 	function display($tpl = null)
 	{
-		$greeting = $this->get( 'Kalender' );
+		$events = $this->get( 'Events' );
+		$kalenders = $this->get('Kalenders');
 		//$params = &JComponentHelper::getParams( 'com_snk' );
 		//$greeting =  $params->get( 'SSID' );
 
-		$this->assignRef( 'greeting',	$greeting );
+
+		$this->assignRef( 'events', $events );
+		$this->assignRef( 'kalenders', $kalenders );
 
 		parent::display($tpl);
 	}
