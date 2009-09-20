@@ -17,6 +17,7 @@
 		<param name="SSIDs" default="4" />
 		<param name="Kategories" default="" />
 		<param name="Stufen" default="" />
+		<param name="limit" default="20" />
 	</params>
 
 	<!-- Site Main File Copy Section -->

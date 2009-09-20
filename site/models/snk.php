@@ -14,9 +14,11 @@ class SnkModelSnk extends JModel {
 	var $stufen_cache = array();
 	var $kalender_cache = array();
 
-	function getKalenders(){
-		$params = &JComponentHelper::getParams( 'com_snk' );
-		$ssids =  split(",",$params->get('SSIDs'));
+	function getKalenders($params = null){
+		if ($params == null)
+			$params = &JComponentHelper::getParams( 'com_snk' );
+
+		$ssids =  split(",",$params->get('SSIDs',4));
 
 		$out = array();
 		foreach ($ssids as $ssid){
@@ -25,15 +27,22 @@ class SnkModelSnk extends JModel {
 		return $out;
 	}
 
-	function getEvents() {
+	function getEvents($params = null) {
 		ini_set('default_socket_timeout',1);
 		$SN = new com_snk_jsonRPCClient("https://www.scoutnet.de/jsonrpc/server.php");
-		$params = &JComponentHelper::getParams( 'com_snk' );
+		//$SN = new com_snk_jsonRPCClient("http://localhost/www.scoutnet.de/public_html/jsonrpc/server.php");
+		$default_limit = 4;
+		if ($params == null) {
+			$params = &JComponentHelper::getParams( 'com_snk' );
+			$default_limit = 20;
+		}
 
-		$ids =  split(",",$params->get('SSIDs'));
+		$ids =  split(",",$params->get('SSIDs',4));
+
+		$limit = $params->get('limit',$default_limit);
 
 		$filter = array(
-			'limit'=>'20',
+			'limit'=>$limit,
 			'after'=>'now()',
 		);
 

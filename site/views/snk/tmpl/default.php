@@ -108,5 +108,3 @@ foreach ($details as $event) {
 }
 $js .= "}";
 $document->addScriptDeclaration($js); ?>
-
-<?print_r ($this->events)?>
