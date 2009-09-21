@@ -39,8 +39,8 @@ tr.snk-headings-row th{
 	background-color: transparent;
 	border-bottom: 0px;
 	line-height: 120%;
-	padding: 0px;
-	text-align:center;
+/*	padding: 0px;
+	/*text-align:center;*/
 }
 .snk-termine th{
 	text-align: left;
