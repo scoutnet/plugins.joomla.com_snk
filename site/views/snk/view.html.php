@@ -6,9 +6,11 @@ class SnkViewSnk extends JView {
 		try {
 			$events = $this->get( 'Events' );
 			$kalenders = $this->get('Kalenders');
+			$optionalKalenders = $this->get('optionalKalenders');
 
 			$this->assignRef( 'events', $events );
 			$this->assignRef( 'kalenders', $kalenders );
+			$this->assignRef( 'optionalKalenders', $optionalKalenders );
 
 			parent::display($tpl);
 		} catch (Exception $e) {

@@ -14,6 +14,21 @@ $details = array();
 
 <h1>ScoutNet-Kalender <?echo $this->kalenders[0]->get_Name();?></h1>
 <div id="snk-<?echo $this->SSID?>" class="snk">
+	<? if (count($this->optionalKalenders) > 0) {?>
+	<div id="stammesAuswahl">
+		Zusätzlich diese Kalender Anzeigen:<br> 
+
+		<? foreach ($this->kalenders as $kal) {$addids[] = $kal['ID'];}?>
+		<form action="" method="get">
+			<input type="hidden" name="option" value="<?echo $option;?>">
+			<input type="hidden" name="Itemid" value="<? echo JRequest::getVar('Itemid');?>">
+			<input type="hidden" name="view" value="<? echo JRequest::getVar('view');?>">
+		<? foreach ($this->optionalKalenders as $kalender) {?>
+			<input onchange="form.submit();" <?echo in_array($kalender['ID'],$addids)?"checked":""; ?> name="addids[]" value="<?echo $kalender['ID'];?>" id="add_id_<?echo $kalender['ID'];?>" title="<?echo $kalender->get_Name();?>" type="checkbox" /><label for="add_id_<?echo $kalender['ID'];?>"><?echo $kalender->get_Name();?></label>
+		<?}?>
+		</form>
+	</div>
+	<?}?>
 	<div class="snk-body">
 		<div class="snk-termine">
 			<table>

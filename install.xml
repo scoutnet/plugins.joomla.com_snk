@@ -15,6 +15,7 @@
 
 	<params>
 		<param name="SSIDs" default="4" />
+		<param name="optionalSSIDs" default="" />
 		<param name="Kategories" default="" />
 		<param name="Stufen" default="" />
 		<param name="limit" default="20" />

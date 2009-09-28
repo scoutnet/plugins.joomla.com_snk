@@ -1,6 +1,10 @@
 <?php
 defined('_JEXEC') or die();
 
+
+//define("SCOUTNET_SERVER","http://localhost/www.scoutnet.de/public_html/jsonrpc/server.php");
+define("SCOUTNET_SERVER","https://www.scoutnet.de/jsonrpc/server.php");
+
 require_once("jsonRPCClient.php");
 require_once('stufe.php');
 require_once('kalender.php');
@@ -19,25 +23,72 @@ class SnkModelSnk extends JModel {
 			$params = &JComponentHelper::getParams( 'com_snk' );
 
 		$ssids =  split(",",$params->get('SSIDs',4));
+		$addids = JRequest::getVar('addids');
+
+		if (is_array($addids)) {
+			$ssids = array_merge($ssids, $addids);
+		}
 
 		$out = array();
 		foreach ($ssids as $ssid){
 			$out[] = $this->get_kalender_by_id($ssid);
 		}
+
+		return $out;
+	}
+
+	function getOptionalKalenders($params = null){
+		if ($params == null)
+			$params = &JComponentHelper::getParams( 'com_snk' );
+
+		$optionalSSIDs = $params->get('optionalSSIDs',"");
+
+		if (!isset($optionalSSIDs) or strlen($optionalSSIDs) == 0) {
+			return Array();
+		}
+
+		$addSsids =  split(",",$optionalSSIDs);
+
+		$SN = new com_snk_jsonRPCClient(SCOUTNET_SERVER);
+
+		$results = $SN->get_data_by_global_id($addSsids,array('kalenders'=>$filter));
+
+		foreach ($results as $record) {
+			if ($record['type'] === 'kalender'){
+				$kalender = new kalender($record['content']);
+				$this->kalender_cache[$kalender['ID']] = $kalender;
+			}
+		}
+
+		$out = array();
+		foreach ($addSsids as $ssid){
+			$kalender =  $this->get_kalender_by_id($ssid);
+			if ($kalender != null) {
+				$out[] = $kalender;
+			}
+
+		}
+
 		return $out;
 	}
 
 	function getEvents($params = null) {
 		ini_set('default_socket_timeout',1);
-		$SN = new com_snk_jsonRPCClient("https://www.scoutnet.de/jsonrpc/server.php");
-		//$SN = new com_snk_jsonRPCClient("http://localhost/www.scoutnet.de/public_html/jsonrpc/server.php");
+		$SN = new com_snk_jsonRPCClient(SCOUTNET_SERVER);
 		$default_limit = 4;
+
+		// only in the component
 		if ($params == null) {
 			$params = &JComponentHelper::getParams( 'com_snk' );
 			$default_limit = 20;
+			$addids = JRequest::getVar('addids');
 		}
 
 		$ids =  split(",",$params->get('SSIDs',4));
+
+		if (is_array($addids)) {
+			$ids = array_merge($ids, $addids);
+		}
 
 		$limit = $params->get('limit',$default_limit);
 

@@ -1,6 +1,7 @@
 <root>
   <params>
     <param type="text" name="SSIDs" size="25" label="Kalender SSIDs:" description="Gib die SSIDs der Kalender ein, die du anzeigen willst. Um mehrere einzutragen trenne sie bitte mit dem Komma. Falls du dieses Feld leer läßt, wird der Kalender der Diozese Köln angezeigt." />
+    <param type="text" name="optionalSSIDs" size="25" label="zusätzliche Kalender SSIDs:" description="Gib die SSIDs der Kalender ein, die du zusätzlich (also in mit checkboxen) anzeigen willst. Um mehrere einzutragen trenne sie bitte mit dem Komma. Falls du dieses Feld leer läßt, wird keine auswahl angeboten." />
     <param type="text" name="Kategories" size="25" label="Kalender Kategorien:" description="Please enter the Ids of the Kategories, you want to show. This list must be comma seperated. If left empty all Categories are shown." />
     <param type="text" name="Stufen" size="25" label="Kalender Stufen:" description="Please enter the Stufen you want to show. The list must be comma seperated. If left empty all Stufen will be shown." />
     <param type="text" name="limit" size="25" label="Anzahl von Terminen:" description="Gib die anzahl der Termine ein, die du anzeigen möchtest. Wenn du nichts nimmst, wird 20 angenommen." />
