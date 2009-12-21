@@ -43,6 +43,7 @@
 	</files>
 
 	<administration>
+		<menu>snk</menu>
 		<!-- Administration Main File Copy Section -->
 		<!-- Note the folder attribute: This attribute describes the folder
 			to copy FROM in the package to install therefore files copied
@@ -50,6 +51,7 @@
 		<files folder="admin">
 			<!-- Site Main File Copy Section -->
 			<filename>snk.xml</filename>
+			<filename>snk.php</filename>
 			<filename>index.html</filename>
 		</files>		
 	</administration>

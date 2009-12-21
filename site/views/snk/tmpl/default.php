@@ -13,9 +13,9 @@ $details = array();
 
 
 <h1>ScoutNet-Kalender <?echo $this->kalenders[0]->get_Name();?></h1>
-<div id="snk-<?echo $this->SSID?>" class="snk">
+<div id="snk-<?echo $this->kalenders[0]['ID']?>" class="snk">
 	<? if (count($this->optionalKalenders) > 0) {?>
-	<div id="stammesAuswahl">
+	<div id="snk-stammesAuswahl">
 		Zusätzlich diese Kalender Anzeigen:<br> 
 
 		<? foreach ($this->kalenders as $kal) {$addids[] = $kal['ID'];}?>
@@ -107,7 +107,7 @@ $details = array();
 	</div>
 	<div class="snk-footer">
 		<div class="snk-hinzufuegen">
-			<a href="https://www.scoutnet.de/community/kalender/events.html?task=create&amp;SSID=<? echo $this->SSID?>" target="_top">Termin&nbsp;hinzufügen</a>
+			<a href="https://www.scoutnet.de/community/kalender/events.html?task=create&amp;SSID=<? echo $this->kalenders[0]['ID']?>" target="_top">Termin&nbsp;hinzufügen</a>
 		</div>
 		<div class="snk-powered-by">
 			Powered by <span><a href="http://kalender.scoutnet.de/" target="_top">ScoutNet.DE</a></span>
