@@ -69,6 +69,6 @@
 	<!-- UPDATESERVER DEFINITION -->
 	<updateservers>
 		<!-- Note: No spaces or linebreaks allowed between the server tags -->
-		<server type="extension" priority="1" name="ScoutNet Update Site">https://www.scoutnet.de/technik/kalender/plugins/joomla/joomla_snk-update.xml</server>
+		<server type="extension" priority="1" name="ScoutNet Update Site">https://www.scoutnet.de/technik/kalender/plugins/joomla/com_snk_update.xml</server>
 	</updateservers>
 </extension>
