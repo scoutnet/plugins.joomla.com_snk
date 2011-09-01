@@ -2,7 +2,7 @@
 <extension type="component" version="1.6.0" methode="upgrade">
 	<name>COM_SNK</name>
 	<!-- The following elements are optional and free of formatting conttraints -->
-	<creationDate>2009-09-16</creationDate>
+	<creationDate>2011-09-16</creationDate>
 	<author>Stefan "Mütze" Horst</author>
 	<authorEmail>muetze@dpsg-liblar.de</authorEmail>
 	<authorUrl>http://www.scoutnet.de</authorUrl>
