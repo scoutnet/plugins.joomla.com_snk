@@ -29,9 +29,11 @@
 		<filename>controller.php</filename>
 		<filename>snk.php</filename>
 		<filename>index.html</filename>
+		<filename>metadata.xml</filename>
 		<folder>assets</folder>
 		<folder>models</folder>
 		<folder>views</folder>
+		<folder>language</folder>
 	</files>
 
 	<media destination="com_snk" folder="media">
@@ -47,16 +49,18 @@
 			in this section are copied from /admin/ in the package -->
 		<files folder="admin">
 			<!-- Site Main File Copy Section -->
-			<filename>snk.xml</filename>
 			<filename>snk.php</filename>
+			<filename>config.xml</filename>
 			<filename>controller.php</filename>
 			<filename>index.html</filename>
+			<folder>controllers</folder>
 			<folder>models</folder>
 			<folder>views</folder>
+			<folder>res</folder>
 		</files>		
 		<languages folder="admin">
-			<language tag="en-GB">language/en-GB/en-GB.com_helloworld.ini</language>
-			<language tag="en-GB">language/en-GB/en-GB.com_helloworld.sys.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_snk.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_snk.sys.ini</language>
 		</languages>
 	</administration>
 
