@@ -19,10 +19,13 @@ class SnkModelSnk extends JModel {
 	var $kalender_cache = array();
 
 	function getKalenders($params = null){
-		if ($params == null)
-			$params = &JComponentHelper::getParams( 'com_snk' );
+		if ($params == null) {
+			$ssids =  split(",",JRequest::getString('SSIDs','4'));
+		} else {
+			$ssids =  split(",",$params->get('SSIDs','4'));
+		}
 
-		$ssids =  split(",",$params->get('SSIDs',4));
+
 		$addids = JRequest::getVar('addids');
 
 		if (is_array($addids)) {
@@ -38,10 +41,11 @@ class SnkModelSnk extends JModel {
 	}
 
 	function getOptionalKalenders($params = null){
-		if ($params == null)
-			$params = &JComponentHelper::getParams( 'com_snk' );
-
-		$optionalSSIDs = $params->get('optionalSSIDs',"");
+		if ($params == null) {
+			$optionalSSIDs = JRequest::getString('optionalSSIDs',"");
+		} else {
+			$optionalSSIDs = $params->get('optionalSSIDs',"");
+		}
 
 		if (!isset($optionalSSIDs) or strlen($optionalSSIDs) == 0) {
 			return Array();
@@ -79,30 +83,33 @@ class SnkModelSnk extends JModel {
 
 		// only in the component
 		if ($params == null) {
-			$params = &JComponentHelper::getParams( 'com_snk' );
 			$default_limit = 20;
 			$addids = JRequest::getVar('addids');
+			$ids =  split(",",JRequest::getString('SSIDs','4'));
+			$limit = JRequest::getString('limit',$default_limit);
+			$kategories = JRequest::getString('Kategories');
+			$stufen = JRequest::getString('Stufen');
+		} else {
+			$ids =  split(",",$params->get('SSIDs',4));
+			$limit = $params->get('limit',$default_limit);
+			$kategories = $params->get('Kategories');
+			$stufen = $params->get('Stufen');
 		}
-
-		$ids =  split(",",$params->get('SSIDs',4));
 
 		if (is_array($addids)) {
 			$ids = array_merge($ids, $addids);
 		}
 
-		$limit = $params->get('limit',$default_limit);
 
 		$filter = array(
 			'limit'=>$limit,
 			'after'=>'now()',
 		);
 
-		$kategories = $params->get('Kategories');
 		if (isset($kategories) && trim($kategories)) {
 			$filter['kategories'] = split(",",$kategories);
 		}
 
-		$stufen = $params->get('Stufen');
 		if (isset($stufen) && trim($stufen)) {
 			$filter['stufen'] = split(",",$stufen);
 		}

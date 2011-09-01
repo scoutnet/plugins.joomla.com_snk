@@ -1,9 +1,57 @@
-<root>
-  <params>
-    <param type="text" name="SSIDs" size="25" label="Kalender SSIDs:" description="Gib die SSIDs der Kalender ein, die du anzeigen willst. Um mehrere einzutragen trenne sie bitte mit dem Komma. Falls du dieses Feld leer läßt, wird der Kalender der Diozese Köln angezeigt." />
-    <param type="text" name="optionalSSIDs" size="25" label="zusätzliche Kalender SSIDs:" description="Gib die SSIDs der Kalender ein, die du zusätzlich (also in mit checkboxen) anzeigen willst. Um mehrere einzutragen trenne sie bitte mit dem Komma. Falls du dieses Feld leer läßt, wird keine auswahl angeboten." />
-    <param type="text" name="Kategories" size="25" label="Kalender Kategorien:" description="Please enter the Ids of the Kategories, you want to show. This list must be comma seperated. If left empty all Categories are shown." />
-    <param type="text" name="Stufen" size="25" label="Kalender Stufen:" description="Please enter the Stufen you want to show. The list must be comma seperated. If left empty all Stufen will be shown." />
-    <param type="text" name="limit" size="25" label="Anzahl von Terminen:" description="Gib die anzahl der Termine ein, die du anzeigen möchtest. Wenn du nichts nimmst, wird 20 angenommen." />
-  </params>
-</root>
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.0" methode="upgrade">
+	<name>COM_SNK</name>
+	<!-- The following elements are optional and free of formatting conttraints -->
+	<creationDate>2009-09-16</creationDate>
+	<author>Stefan "Mütze" Horst</author>
+	<authorEmail>muetze@dpsg-liblar.de</authorEmail>
+	<authorUrl>http://www.scoutnet.de</authorUrl>
+	<copyright>Copyright Info</copyright>
+	<license>License Info</license>
+	<!--  The version string is recorded in the components table -->
+	<version>1.7.1</version>
+	<!-- The description is optional and defaults to the name -->
+	<description>COM_SNK_DESCRIPTION</description>
+
+	<update>
+	</update>
+
+	<params>
+		<param name="SSIDs" default="4" />
+		<param name="optionalSSIDs" default="" />
+		<param name="Kategories" default="" />
+		<param name="Stufen" default="" />
+		<param name="limit" default="20" />
+	</params>
+
+	<!-- Site Main File Copy Section -->
+	<files folder="site">
+		<filename>controller.php</filename>
+		<filename>snk.php</filename>
+		<filename>index.html</filename>
+		<folder>assets</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+	</files>
+
+	<administration>
+		<menu img="../media/com_snk/images/sn-16x16.png">COM_SNK_MENU</menu>
+		<!-- Administration Main File Copy Section -->
+		<!-- Note the folder attribute: This attribute describes the folder
+			to copy FROM in the package to install therefore files copied
+			in this section are copied from /admin/ in the package -->
+		<files folder="admin">
+			<!-- Site Main File Copy Section -->
+			<filename>snk.xml</filename>
+			<filename>snk.php</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<folder>models</folder>
+			<folder>views</folder>
+		</files>		
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/en-GB.com_helloworld.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_helloworld.sys.ini</language>
+		</languages>
+	</administration>
+</extension>

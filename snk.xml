@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<install type="component" version="1.5.0">
-	<name>SNK</name>
+<extension type="component" version="1.6.0" methode="upgrade">
+	<name>COM_SNK</name>
 	<!-- The following elements are optional and free of formatting conttraints -->
 	<creationDate>2009-09-16</creationDate>
 	<author>Stefan "Mütze" Horst</author>
@@ -9,9 +9,12 @@
 	<copyright>Copyright Info</copyright>
 	<license>License Info</license>
 	<!--  The version string is recorded in the components table -->
-	<version>0.7</version>
+	<version>1.7.1</version>
 	<!-- The description is optional and defaults to the name -->
-	<description>Scoutnet Kalender Plugin</description>
+	<description>COM_SNK_DESCRIPTION</description>
+
+	<update>
+	</update>
 
 	<params>
 		<param name="SSIDs" default="4" />
@@ -26,24 +29,18 @@
 		<filename>controller.php</filename>
 		<filename>snk.php</filename>
 		<filename>index.html</filename>
-		<filename>assets/index.html</filename>
-		<filename>assets/kalender.css</filename>
-		<filename>models/snk.php</filename>
-		<filename>models/event.php</filename>
-		<filename>models/index.html</filename>
-		<filename>models/jsonRPCClient.php</filename>
-		<filename>models/kalender.php</filename>
-		<filename>models/stufe.php</filename>
-		<filename>models/user.php</filename>
-		<filename>views/snk/index.html</filename>
-		<filename>views/snk/view.html.php</filename>
-		<filename>views/snk/tmpl/index.html</filename>
-		<filename>views/snk/tmpl/default.php</filename>
-		<filename>views/index.html</filename>
+		<folder>assets</folder>
+		<folder>models</folder>
+		<folder>views</folder>
 	</files>
 
+	<media destination="com_snk" folder="media">
+		<filename>index.html</filename>
+		<folder>images</folder>
+	</media>
+
 	<administration>
-		<menu>snk</menu>
+		<menu img="../media/com_snk/images/sn-16x16.png">COM_SNK_MENU</menu>
 		<!-- Administration Main File Copy Section -->
 		<!-- Note the folder attribute: This attribute describes the folder
 			to copy FROM in the package to install therefore files copied
@@ -52,7 +49,14 @@
 			<!-- Site Main File Copy Section -->
 			<filename>snk.xml</filename>
 			<filename>snk.php</filename>
+			<filename>controller.php</filename>
 			<filename>index.html</filename>
+			<folder>models</folder>
+			<folder>views</folder>
 		</files>		
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/en-GB.com_helloworld.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_helloworld.sys.ini</language>
+		</languages>
 	</administration>
-</install>
+</extension>
