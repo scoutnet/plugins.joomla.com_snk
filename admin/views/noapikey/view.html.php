@@ -39,7 +39,7 @@ class SnkViewNoapikey extends JView
 	protected function addToolBar() 
 	{
 		$kalender = $this->get('Kalender');
-		JToolBarHelper::title(JText::_('COM_SNK_MANAGER_EVENTS').' - '.$kalender->get_Name());
+		JToolBarHelper::title(JText::_('COM_SNK_MANAGER_EVENTS'),'snk');
 		JToolBarHelper::preferences('com_snk');
 
 	}

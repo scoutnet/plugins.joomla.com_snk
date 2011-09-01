@@ -41,7 +41,8 @@ class SnkController extends JController
 			$user->save();
 		}
 
-		if (trim($user->getParam('ScoutNetUser')) == '' || trim($user->getParam('ScoutApiKey')) == '') {
+
+		if (trim($this->params->get('AES_key')) == '' || trim($iv = $this->params->get('AES_iv')) == '' || trim($user->getParam('ScoutNetUser')) == '' || trim($user->getParam('ScoutApiKey')) == '') {
 			// set default view if not set
 			JRequest::setVar('view', JRequest::getCmd('view', 'noapikey'));
 		} else {

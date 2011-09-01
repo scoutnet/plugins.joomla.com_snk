@@ -45,7 +45,11 @@ class SnkViewEvents extends JView
 
 		$SN = $this->get('SN');
 	
-		$rights = $SN->has_write_permission_to_calender($kalender['ID'],$user->getParam('ScoutNetUser'),$user->getParam('ScoutApiKey'));
+		try {
+			$rights = $SN->has_write_permission_to_calender($kalender['ID'],$user->getParam('ScoutNetUser'),$user->getParam('ScoutApiKey'));
+		} catch (Exception $e) {
+			$rights = array('code' => 2);
+		}
 
 		if($rights['code'] != 0) {
 			JToolBarHelper::custom( 'snk.request', 'move', 'user-add', 'request Rights', false, false );
