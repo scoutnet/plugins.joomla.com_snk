@@ -20,7 +20,7 @@ $details = array();
 
 		<? foreach ($this->kalenders as $kal) {$addids[] = $kal['ID'];}?>
 		<form action="" method="get">
-			<? if isset($option) { ?> <input type="hidden" name="option" value="<?echo $option;?>"><?}?>
+			<? if (isset($option) && trim($option) != '') { ?> <input type="hidden" name="option" value="<?echo $option;?>"><?}?>
 			<input type="hidden" name="Itemid" value="<? echo JRequest::getVar('Itemid');?>">
 			<input type="hidden" name="view" value="<? echo JRequest::getVar('view');?>">
 		<? foreach ($this->optionalKalenders as $kalender) {?>
