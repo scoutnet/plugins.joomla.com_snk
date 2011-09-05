@@ -106,7 +106,7 @@ $details = array();
 		</div>
 	</div>
 	<div class="snk-footer">
-		<div class="snk-hinzufuegen">
+		<div class="snk-hinzufuegen" style="visibility:hidden">
 			<a href="https://www.scoutnet.de/community/kalender/events.html?task=create&amp;SSID=<? echo $this->kalenders[0]['ID']?>" target="_top">Termin&nbsp;hinzufügen</a>
 		</div>
 		<div class="snk-powered-by">
