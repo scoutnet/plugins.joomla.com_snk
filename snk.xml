@@ -2,14 +2,14 @@
 <extension type="component" version="1.6.0" methode="upgrade">
 	<name>COM_SNK</name>
 	<!-- The following elements are optional and free of formatting conttraints -->
-	<creationDate>2011-09-16</creationDate>
+	<creationDate>2012-01-22</creationDate>
 	<author>Stefan "Mütze" Horst</author>
 	<authorEmail>muetze@dpsg-liblar.de</authorEmail>
 	<authorUrl>http://www.scoutnet.de</authorUrl>
 	<copyright>Copyright Info</copyright>
 	<license>License Info</license>
 	<!--  The version string is recorded in the components table -->
-	<version>1.7.3</version>
+	<version>1.7.4</version>
 	<!-- The description is optional and defaults to the name -->
 	<description>COM_SNK_DESCRIPTION</description>
 
