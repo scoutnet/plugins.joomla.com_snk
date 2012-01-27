@@ -139,7 +139,7 @@ JHtml::_('behavior.formvalidation');
 																<td valign="top" align="left">
 
 <?  foreach ($this->keywords as $id=>$name) { ?>
-<input name="jform[keywords][<?=$id?>]" type="checkbox" value="1" id="kw_<?=$id?>" <?=(is_array($this->item['Keywords']) && array_key_exists($id,$this->item['Keywords']))?'checked':''?>><label for="kw_<?=$id?>"><?=$name?></label><br>
+<input name="jform[keywords][<?=$id?>]" type="checkbox" value="1" id="kw_<?=$id?>" <?=(isset($this->item['Keywords']) && is_array($this->item['Keywords']) && array_key_exists($id,$this->item['Keywords']))?'checked':''?>><label for="kw_<?=$id?>"><?=$name?></label><br>
 <?  } ?>
 </td>
 															</tr>
@@ -155,7 +155,7 @@ JHtml::_('behavior.formvalidation');
 																<td valign="top" align="left">
 
 <? foreach ($this->forced_kategories as $id=>$name) {?>
-	<input name="jform[keywords][<?=$id?>]" type="checkbox" value="1" id="kw_<?=$id?>" <?=(is_array($this->item['Keywords']) && array_key_exists($id,$this->item['Keywords']))?'checked':''?>><label for="kw_<?=$id?>"><?=$name?></label><br>
+	<input name="jform[keywords][<?=$id?>]" type="checkbox" value="1" id="kw_<?=$id?>" <?=(isset($this->item['Keywords']) && is_array($this->item['Keywords']) && array_key_exists($id,$this->item['Keywords']))?'checked':''?>><label for="kw_<?=$id?>"><?=$name?></label><br>
 <? } ?>
 </td>
 															</tr>
@@ -171,7 +171,7 @@ JHtml::_('behavior.formvalidation');
 																<td valign="top" align="left">
 
 <? foreach ($this->dpsg_edu as $id=>$name) { ?>
-	<input name="jform[keywords][<?=$id?>]" type="checkbox" value="1" id="kw_<?=$id?>" <?=(is_array($this->item['Keywords']) && array_key_exists($id,$this->item['Keywords']))?'checked':''?>><label for="kw_<?=$id?>"><?=$name?></label><br>
+	<input name="jform[keywords][<?=$id?>]" type="checkbox" value="1" id="kw_<?=$id?>" <?=(isset($this->item['Keywords']) && is_array($this->item['Keywords']) && array_key_exists($id,$this->item['Keywords']))?'checked':''?>><label for="kw_<?=$id?>"><?=$name?></label><br>
 	<? } ?>
 
 </td>
