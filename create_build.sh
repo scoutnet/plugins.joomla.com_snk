@@ -3,7 +3,11 @@
 # com_snk
 version=$(cat component/snk.xml| grep -i "<Version>" | cut -f 2 -d ">" | cut -f 1 -d "<")
 
-if [ ! -e builds/com_snk-$version-final.zip ]; then
+if [ ! -e build ]; then
+	mkdir build
+fi
+
+if [ ! -e build/com_snk-$version-final.zip ]; then
 	svn export component export
 	cd export
 	zip -r com_snk-$version-final.zip *
