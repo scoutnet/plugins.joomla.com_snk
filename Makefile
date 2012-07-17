@@ -25,3 +25,5 @@ build:
 	svn add ../scoutnet_download/$(NAME)-$<-final.zip
 	svn commit -m "new Version for $(NAME) $<" ../scoutnet_download
 
+clean:
+	rm -rf build
