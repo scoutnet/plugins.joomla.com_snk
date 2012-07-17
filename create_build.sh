@@ -10,14 +10,13 @@ fi
 
 
 if [ ! -e build/$name-$version-final.zip ]; then
-	svn export src export
-	cd export
+	cd src
 	zip -r $name-$version-final.zip *
 	mv $name-$version-final.zip ../build/
 	cd ..
-	rm -rf export
 
-	svn add build/$name-$version-final.zip
+	# TODO: create TAG 
+	# git add build/$name-$version-final.zip
 
 xml=$(cat build/${name}_update.xml | grep -v "</updates>")
 
@@ -56,7 +55,8 @@ done
 
 echo "</updates>" >> build/${name}_update.xml
 
-svn commit -m "new Version for $name $version"
+# TODO: commit changes to git
+# svn commit -m "new Version for $name $version"
 
 cp build/${name}_update.xml ../scoutnet_download/
 cp build/${name}-$version-final.zip ../scoutnet_download/
