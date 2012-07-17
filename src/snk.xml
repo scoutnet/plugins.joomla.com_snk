@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="1.6.0" methode="upgrade">
+	<name>COM_SNK</name>
+	<!-- The following elements are optional and free of formatting conttraints -->
+	<creationDate>2012-01-27</creationDate>
+	<author>Stefan "Mütze" Horst</author>
+	<authorEmail>muetze@dpsg-liblar.de</authorEmail>
+	<authorUrl>http://www.scoutnet.de</authorUrl>
+	<copyright>Copyright Info</copyright>
+	<license>License Info</license>
+	<!--  The version string is recorded in the components table -->
+	<version>1.7.5</version>
+	<!-- The description is optional and defaults to the name -->
+	<description>COM_SNK_DESCRIPTION</description>
+
+	<update>
+	</update>
+
+	<params>
+		<param name="SSIDs" default="4" />
+		<param name="optionalSSIDs" default="" />
+		<param name="Kategories" default="" />
+		<param name="Stufen" default="" />
+		<param name="limit" default="20" />
+	</params>
+
+	<!-- Site Main File Copy Section -->
+	<files folder="site">
+		<filename>controller.php</filename>
+		<filename>snk.php</filename>
+		<filename>index.html</filename>
+		<filename>metadata.xml</filename>
+		<folder>assets</folder>
+		<folder>models</folder>
+		<folder>views</folder>
+		<folder>language</folder>
+	</files>
+
+	<media destination="com_snk" folder="media">
+		<filename>index.html</filename>
+		<folder>images</folder>
+	</media>
+
+	<administration>
+		<menu img="../media/com_snk/images/sn-16x16.png">COM_SNK_MENU</menu>
+		<!-- Administration Main File Copy Section -->
+		<!-- Note the folder attribute: This attribute describes the folder
+			to copy FROM in the package to install therefore files copied
+			in this section are copied from /admin/ in the package -->
+		<files folder="admin">
+			<!-- Site Main File Copy Section -->
+			<filename>snk.php</filename>
+			<filename>config.xml</filename>
+			<filename>controller.php</filename>
+			<filename>index.html</filename>
+			<folder>controllers</folder>
+			<folder>models</folder>
+			<folder>views</folder>
+			<folder>res</folder>
+		</files>		
+		<languages folder="admin">
+			<language tag="en-GB">language/en-GB/en-GB.com_snk.ini</language>
+			<language tag="en-GB">language/en-GB/en-GB.com_snk.sys.ini</language>
+			<language tag="de-DE">language/de-DE/de-DE.com_snk.ini</language>
+			<language tag="de-DE">language/de-DE/de-DE.com_snk.sys.ini</language>
+		</languages>
+	</administration>
+
+	<!-- UPDATESERVER DEFINITION -->
+	<updateservers>
+		<!-- Note: No spaces or linebreaks allowed between the server tags -->
+		<server type="extension" priority="1" name="ScoutNet Update Site">https://www.scoutnet.de/technik/kalender/plugins/joomla/com_snk_update.xml</server>
+	</updateservers>
+</extension>

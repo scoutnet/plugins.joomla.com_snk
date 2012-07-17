@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<user>
+	<params group="com_snk">
+		<param name="ScoutNetUser" type="text" size="32" default="" label="MY PARAMETER" description="MY PARAMETER DESCRIPTION" />
+		<param name="ScoutApiKey" type="text" size="32" default="" label="MY PARAMETER" description="MY PARAMETER DESCRIPTION" />
+	</params>
+</user>
