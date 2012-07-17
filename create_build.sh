@@ -2,7 +2,7 @@
 
 # com_snk
 name="com_snk"
-version=$(cat src/$name.xml| grep -i "<Version>" | cut -f 2 -d ">" | cut -f 1 -d "<")
+version=$(cat src/snk.xml| grep -i "<Version>" | cut -f 2 -d ">" | cut -f 1 -d "<")
 
 if [ ! -e build ]; then
 	mkdir build
@@ -17,59 +17,38 @@ if [ ! -e build/$name-$version-final.zip ]; then
 
 	# TODO: create TAG 
 	# git add build/$name-$version-final.zip
+	git tag -a $version -m "version $version"
 
-xml=$(cat build/${name}_update.xml | grep -v "</updates>")
+	xml=$(cat build/${name}_update.xml | grep -v "</updates>")
 
-echo $xml > build/${name}_update.xml
+	echo $xml > build/${name}_update.xml
 
-for joomla_version in '1.6' '1.7' '2.5'; do
-for client_id in '' '<client_id>1</client_id>'; do
+	for joomla_version in '1.6' '1.7' '2.5'; do
+		for client_id in '' '<client_id>1<\/client_id>'; do
 
-xml="	<update>
-		<name>ScoutNet Kalender</name>
-		<description>official ScoutNet Kalender</description>
-		<element>$name</element>
-		<type>component</type>
-		<version>$version</version>
-		$client_id
+			xml=$(cat update_template.xml | sed "s/###NAME###/$name/g" | sed "s/###VERSION###/$version/g" | sed "s/###CLIENT_ID###/$client_id/g" | sed "s/###JOOMLA_VERSION###/$joomla_version/g")
 
-		<infourl title=\"ScoutNet URL\">http://www.scoutnet.de</infourl>
-		<downloads>
-			<downloadurl type=\"full\" format=\"zip\">https://www.scoutnet.de/technik/kalender/plugins/joomla/$name-$version-final.zip</downloadurl>
-		</downloads>
-		<tags>
-			<tag>ScoutNet</tag>
-			<tag>Muetze</tag>
-		</tags>
+			echo $xml >> build/${name}_update.xml
+		done
+	done
 
-		<maintainer>ScoutNet (Mütze)</maintainer>
-		<maintainerurl>http://www.scoutnet.de</maintainerurl>
-		<section>ScoutNet Kalender</section>
+	echo "</updates>" >> build/${name}_update.xml
 
-		<targetplatform name=\"joomla\" version=\"$joomla_version\" />
-	</update>"
+	# TODO: commit changes to git
+	# svn commit -m "new Version for $name $version"
 
-echo $xml >> build/${name}_update.xml
-done
-done
+	cp build/${name}_update.xml ../scoutnet_download/
+	cp build/${name}-$version-final.zip ../scoutnet_download/
 
-echo "</updates>" >> build/${name}_update.xml
+	cd ../scoutnet_download
 
-# TODO: commit changes to git
-# svn commit -m "new Version for $name $version"
+	ln -sf ${name}-$version-final.zip ${name}-current-final.zip
 
-cp build/${name}_update.xml ../scoutnet_download/
-cp build/${name}-$version-final.zip ../scoutnet_download/
+	cd ..
 
-cd ../scoutnet_download
+	echo $version > scoutnet_download/${name}_version.txt
 
-ln -sf ${name}-$version-final.zip ${name}-current-final.zip
-
-cd ..
-
-echo $version > scoutnet_download/${name}_version.txt
-
-svn add scoutnet_download/${name}-$version-final.zip
-svn commit -m "new Version for ${name} $version" scoutnet_download
+	#svn add scoutnet_download/${name}-$version-final.zip
+	#svn commit -m "new Version for ${name} $version" scoutnet_download
 fi
 
