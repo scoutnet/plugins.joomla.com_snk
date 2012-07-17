@@ -6,9 +6,9 @@
 		<version>###VERSION###</version>
 		###CLIENT_ID###
 
-		<infourl title=\"ScoutNet URL\">http://www.scoutnet.de</infourl>
+		<infourl title="ScoutNet URL">http://www.scoutnet.de</infourl>
 		<downloads>
-			<downloadurl type=\"full\" format=\"zip\">https://www.scoutnet.de/technik/kalender/plugins/joomla/###NAME###-###VERSION###-final.zip</downloadurl>
+			<downloadurl type="full" format="zip">https://www.scoutnet.de/technik/kalender/plugins/joomla/###NAME###-###VERSION###-final.zip</downloadurl>
 		</downloads>
 		<tags>
 			<tag>ScoutNet</tag>
@@ -19,5 +19,5 @@
 		<maintainerurl>http://www.scoutnet.de</maintainerurl>
 		<section>ScoutNet Kalender</section>
 
-		<targetplatform name=\"joomla\" version=\"###JOOMLA_VERSION###\" />
+		<targetplatform name="joomla" version="###JOOMLA_VERSION###" />
 	</update>
