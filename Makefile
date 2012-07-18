@@ -9,10 +9,9 @@ deploy: default ../scoutnet_download/$(NAME)-$(CURRENTVERSION)-final.zip
 $(NAME)-%-final.zip: build/$(NAME)-%-final.zip ../scoutnet_download/$(NAME)-%-final.zip
 
 tag: 
-	@if [ ! -n $$(git tag -l $(CURRENTVERSION)) ]; then git tag -a $* -m "version $*"; fi ; \
+	@if [ ! -n $$(git tag -l $(CURRENTVERSION)) ]; then git tag -a $(CURRENTVERSION) -m "version $(CURRENTVERSION)"; fi
 
 build/$(NAME)-%-final.zip:
-	#git tag -a $* -m "version $*"
 	cd src; zip -r $(NAME)-$*-final.zip *
 	mv src/$(NAME)-$*-final.zip build
 
