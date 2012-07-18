@@ -24,7 +24,7 @@ build:
 	cp build/$(NAME)_update.xml ../scoutnet_download/
 	cp build/$(NAME)-$*-final.zip ../scoutnet_download/
 	cd ../scoutnet_download; ln -sf $(NAME)-$*-final.zip $(NAME)-current-final.zip
-	@echo $* > ../scoutnet_download/$(NAME)_currentversion.txt
+	@echo $* > ../scoutnet_download/$(NAME)_version.txt
 	svn add ../scoutnet_download/$(NAME)-$<-final.zip
 	svn commit -m "new Version for $(NAME) $<" ../scoutnet_download
 
