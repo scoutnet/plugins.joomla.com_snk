@@ -1,6 +1,7 @@
 NAME = com_snk
 XML = snk.xml
 CURRENTVERSION = $(shell cat src/$(XML) | grep -i "<Version>" | cut -f 2 -d ">" | cut -f 1 -d "<")
+TAGS = $(shell git show-ref --tags | sed "s/ /_/g")
 
 default: tag build build/$(NAME)-$(CURRENTVERSION)-final.zip build/$(NAME)_update.xml
 
@@ -11,7 +12,8 @@ $(NAME)-%-final.zip: build/$(NAME)-%-final.zip ../scoutnet_download/$(NAME)-%-fi
 tag: .git/refs/tags/$(CURRENTVERSION)
 
 .git/refs/tags/%:
-	git tag -a $* -m "version $*"
+	@for f in $(TAGS); do echo ''Writing  '' $$(echo $$f | cut -c42-); echo $$(echo $$f | cut -c1-40) > ".git/$$(echo $$f | cut -c42-)"; done
+	@if [ ! -n $$(git tag -l $*) ]; then git tag -a $* -m "version $*"; fi;
 
 build/$(NAME)-%-final.zip:
 	cd src; zip -r $(NAME)-$*-final.zip *
