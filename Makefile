@@ -8,8 +8,10 @@ deploy: default ../scoutnet_download/$(NAME)-$(CURRENTVERSION)-final.zip
 
 $(NAME)-%-final.zip: build/$(NAME)-%-final.zip ../scoutnet_download/$(NAME)-%-final.zip
 
-tag: 
-	@if [ ! -n $$(git tag -l $(CURRENTVERSION)) ]; then git tag -a $(CURRENTVERSION) -m "version $(CURRENTVERSION)"; fi
+tag: .git/refs/tags/$(CURRENTVERSION)
+
+.git/refs/tags/%:
+	git tag -a $* -m "version $*"
 
 build/$(NAME)-%-final.zip:
 	cd src; zip -r $(NAME)-$*-final.zip *
