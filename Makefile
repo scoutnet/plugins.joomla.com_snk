@@ -57,7 +57,7 @@ tag: tag$(CURRENTVERSION)
 
 tag%:
 	#Tag only if not existent
-	@if [ ! -n "$$(git tag -l $*)" ]; then git tag -a $* -m "version $*"; echo 'create tag [$*]'; else echo 'already Taged'; fi;
+	@if [ -z "$$(git tag -l $*)" ]; then git tag -a $* -m "version $*"; echo 'create tag [$*]'; else echo 'already Taged'; fi;
 
 build/$(NAME)-%-final.zip:
 	cd src; zip -r $(NAME)-$*-final.zip *
