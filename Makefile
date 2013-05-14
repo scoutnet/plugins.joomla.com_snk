@@ -45,11 +45,11 @@ step_patch:
 	@echo 'new Version [$(NEXTVERSION_PATCH)]'
 	cat src/$(XML) | sed "s/<version>[0-9]*[.][0-9]*[.][0-9]*<\/version>/<version>$(NEXTVERSION_PATCH)<\/version>/g" > src/_$(XML)
 	mv src/_$(XML) src/$(XML)
-	# Tag current Version
-	make tag$(NEXTVERSION_PATCH)
 	# Commit version xml to git
 	git add src/$(XML)
 	git commit -m "new Version [$(NEXTVERSION_PATCH)]"
+	# Tag current Version
+	make tag$(NEXTVERSION_PATCH)
 	# build new version
 	make default
 
