@@ -12,20 +12,20 @@ defined('_JEXEC') or die('Restricted Access');
 		</td>
 <td>
 			<?php 
-$start_date = substr(strftime("%A",$item['Start']),0,2).",&nbsp;".strftime("%d.%m.%Y",$item['Start']);
+$start_date = substr(gmstrftime("%A",$item['Start']),0,2).",&nbsp;".gmstrftime("%d.%m.%Y",$item['Start']);
 $end_date = '';
 							        
-if (isset($item['End']) && strftime("%d%m%Y",$item['Start']) != strftime("%d%m%Y",$item['End']) ) {
-	$end_date = substr(strftime("%A",$item['End']),0,2).",&nbsp;".strftime("%d.%m.%Y",$item['End']);
+if (isset($item['End']) && gmstrftime("%d%m%Y",$item['Start']) != gmstrftime("%d%m%Y",$item['End']) ) {
+	$end_date = substr(gmstrftime("%A",$item['End']),0,2).",&nbsp;".gmstrftime("%d.%m.%Y",$item['End']);
 }
     
 $start_time = '';
 $end_time = '';
 if ($item['All_Day'] != 1) { 
-	$start_time = strftime("%H:%M",$item['Start']);
+	$start_time = gmstrftime("%H:%M",$item['Start']);
 
-	if (isset($item['End']) && strftime("%H%M",$item['Start']) != strftime("%H%M",$item['End']) ) {
-		$end_time = strftime("%H:%M",$item['End']);
+	if (isset($item['End']) && gmstrftime("%H%M",$item['Start']) != gmstrftime("%H%M",$item['End']) ) {
+		$end_time = gmstrftime("%H:%M",$item['End']);
 	}
 }
     
@@ -39,11 +39,11 @@ echo $date_with_time;
 			<?php echo $item['Title']; ?>
 		</td>
 <td>
-<?=$item['Created_By']?>, <?=strftime("%d.%m.%Y %H:%M",$item['Created_At'])?>
+<?=$item['Created_By']?>, <?=gmstrftime("%d.%m.%Y %H:%M",$item['Created_At'])?>
 </td>
 <td>
 <? if (trim($item['Last_Modified_By']) != '') { ?>
-<?=$item['Last_Modified_By']?>, <?=strftime("%d.%m.%Y %H:%M",$item['Last_Modified_At'])?>
+<?=$item['Last_Modified_By']?>, <?=gmstrftime("%d.%m.%Y %H:%M",$item['Last_Modified_At'])?>
 <? } else {?>-<?}?>
 </td>
 </tr>

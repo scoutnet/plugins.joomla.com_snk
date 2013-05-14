@@ -41,7 +41,7 @@ $details = array();
 					<th class="snk-eintrag-kategorien-ueberschrift">Kategorien</th>
 				</tr>
 				<? foreach ($this->events as $event) { 
-					$current_monat = strftime("%B '%y",$event['Start']);
+					$current_monat = gmstrftime("%B '%y",$event['Start']);
 					if ($old_monat != $current_monat) {
 						$old_monat = $current_monat;
 					?>
@@ -53,21 +53,21 @@ $details = array();
 					<tr> 
 						<? if (count($this->kalenders) > 1 ) {?><td class="snk-eintrag-ebene"><?echo str_replace(" ","&nbsp;",$event['Kalender']->get_long_Name())?></th><?}?>
 						<td class="snk-eintrag-datum"><?
-							$datum = substr(strftime("%A",$event['Start']),0,2).",&nbsp;".strftime("%d.%m.",$event['Start']);
+							$datum = substr(gmstrftime("%A",$event['Start']),0,2).",&nbsp;".gmstrftime("%d.%m.",$event['Start']);
 
-							if (isset($event['End']) && strftime("%d%m%Y",$event['Start']) != strftime("%d%m%Y",$event['End']) ) {
+							if (isset($event['End']) && gmstrftime("%d%m%Y",$event['Start']) != gmstrftime("%d%m%Y",$event['End']) ) {
 								$datum .= "&nbsp;-&nbsp;";
-								$datum .= substr(strftime("%A",$event['End']),0,2).",&nbsp;".strftime("%d.%m.",$event['End']);
+								$datum .= substr(gmstrftime("%A",$event['End']),0,2).",&nbsp;".gmstrftime("%d.%m.",$event['End']);
 							}   
 							echo $datum;
 						?></td>
 						<td class="snk-eintrag-zeit"><?
 							$zeit = ""; 
 							if ($event['All_Day'] != 1) {
-								$zeit = strftime("%H:%M",$event['Start']);
-								if (isset($event['End']) && strftime("%H%M",$event['Start']) != strftime("%H%M",$event['End']) ) {
+								$zeit = gmstrftime("%H:%M",$event['Start']);
+								if (isset($event['End']) && gmstrftime("%H%M",$event['Start']) != gmstrftime("%H%M",$event['End']) ) {
 									$zeit .= "&nbsp;-&nbsp;";
-									$zeit .= strftime("%H:%M",$event['End']);
+									$zeit .= gmstrftime("%H:%M",$event['End']);
 								}   
 							}   
 							echo $zeit;
