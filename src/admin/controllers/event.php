@@ -34,10 +34,10 @@ class SnkControllerEvent extends JControllerForm {
 
 		$data = JRequest::getVar('jform', array(), 'post', 'array');
 
-		$start_time = split(':',$data['Start_Time']);
-		$end_time = split(':',$data['End_Time']);
-		$start_date = split('-',$data['Start_Date']);
-		$end_date = split('-',$data['End_Date']);
+		$start_time = explode(':',$data['Start_Time']);
+		$end_time = explode(':',$data['End_Time']);
+		$start_date = explode('-',$data['Start_Date']);
+		$end_date = explode('-',$data['End_Date']);
 
 		$start = mktime(intval($start_time[0]),
 			intval($start_time[1]),intval(0),

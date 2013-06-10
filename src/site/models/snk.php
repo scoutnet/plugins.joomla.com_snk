@@ -20,9 +20,9 @@ class SnkModelSnk extends JModel {
 
 	function getKalenders($params = null){
 		if ($params == null) {
-			$ssids =  split(",",JRequest::getString('SSIDs','4'));
+			$ssids =  explode(",",JRequest::getString('SSIDs','4'));
 		} else {
-			$ssids =  split(",",$params->get('SSIDs','4'));
+			$ssids =  explode(",",$params->get('SSIDs','4'));
 		}
 
 
@@ -51,7 +51,7 @@ class SnkModelSnk extends JModel {
 			return Array();
 		}
 
-		$addSsids =  split(",",$optionalSSIDs);
+		$addSsids =  explode(",",$optionalSSIDs);
 
 		$SN = new com_snk_jsonRPCClient(SCOUTNET_SERVER);
 
@@ -85,12 +85,12 @@ class SnkModelSnk extends JModel {
 		if ($params == null) {
 			$default_limit = 20;
 			$addids = JRequest::getVar('addids');
-			$ids =  split(",",JRequest::getString('SSIDs','4'));
+			$ids =  explode(",",JRequest::getString('SSIDs','4'));
 			$limit = JRequest::getString('limit',$default_limit);
 			$kategories = JRequest::getString('Kategories');
 			$stufen = JRequest::getString('Stufen');
 		} else {
-			$ids =  split(",",$params->get('SSIDs',4));
+			$ids =  explode(",",$params->get('SSIDs',4));
 			$limit = $params->get('limit',$default_limit);
 			$kategories = $params->get('Kategories');
 			$stufen = $params->get('Stufen');
@@ -107,11 +107,11 @@ class SnkModelSnk extends JModel {
 		);
 
 		if (isset($kategories) && trim($kategories)) {
-			$filter['kategories'] = split(",",$kategories);
+			$filter['kategories'] = explode(",",$kategories);
 		}
 
 		if (isset($stufen) && trim($stufen)) {
-			$filter['stufen'] = split(",",$stufen);
+			$filter['stufen'] = explode(",",$stufen);
 		}
 
 
